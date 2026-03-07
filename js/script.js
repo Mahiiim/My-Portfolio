@@ -228,3 +228,79 @@ function initAchievementsLightbox() {
 }
 
 document.addEventListener('DOMContentLoaded', initAchievementsLightbox);
+
+/* ============================================
+   CONTACT PAGE — paste into js/script.js
+   EmailJS integration for contact form
+   ============================================ */
+
+// Initialize EmailJS with your Public Key
+emailjs.init('K1spV-aZ9Q3p4raTC');
+
+function sendMessage() {
+  const nameEl    = document.getElementById('userName');
+  const emailEl   = document.getElementById('userEmail');
+  const msgEl     = document.getElementById('userMessage');
+  const sendBtn   = document.getElementById('sendBtn');
+  const successEl = document.getElementById('formSuccess');
+  const errorEl   = document.getElementById('formError');
+
+  if (!nameEl) return; // Not on contact page
+
+  const name    = nameEl.value.trim();
+  const email   = emailEl.value.trim();
+  const message = msgEl.value.trim();
+
+  // Hide previous alerts
+  successEl.style.display = 'none';
+  errorEl.style.display   = 'none';
+
+  // Basic validation
+  if (!name || !email || !message) {
+    errorEl.textContent = '';
+    errorEl.innerHTML   = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.';
+    errorEl.style.display = 'flex';
+    return;
+  }
+
+  // Email format check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errorEl.innerHTML     = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.';
+    errorEl.style.display = 'flex';
+    return;
+  }
+
+  // Disable button & show loading
+  sendBtn.disabled     = true;
+  sendBtn.innerHTML    = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+  // EmailJS template parameters
+  // Make sure your EmailJS template uses: {{from_name}}, {{from_email}}, {{message}}
+  const templateParams = {
+    from_name:  name,
+    from_email: email,
+    message:    message,
+    to_name:    'Mohaiminul Islam',
+  };
+
+  emailjs.send('service_924gh3j', 'template_xr9tqrg', templateParams)
+    .then(() => {
+      // Success
+      successEl.innerHTML     = '<i class="fa-solid fa-circle-check"></i> Message sent successfully! I\'ll get back to you soon.';
+      successEl.style.display = 'flex';
+      nameEl.value    = '';
+      emailEl.value   = '';
+      msgEl.value     = '';
+      sendBtn.disabled  = false;
+      sendBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+    })
+    .catch((error) => {
+      // Error
+      console.error('EmailJS error:', error);
+      errorEl.innerHTML     = '<i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again.';
+      errorEl.style.display = 'flex';
+      sendBtn.disabled      = false;
+      sendBtn.innerHTML     = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+    });
+}
