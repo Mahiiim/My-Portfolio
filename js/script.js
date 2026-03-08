@@ -1,17 +1,33 @@
 /* ============================================================
    PORTFOLIO — script.js
-   Single-page scroll with active nav, skill bars, lightbox,
-   EmailJS contact form
+   Single-page scroll, active nav, skill bars, lightbox,
+   EmailJS contact form, project page back-navigation
    ============================================================ */
 
 // ── EmailJS init ──────────────────────────────────────────
-emailjs.init('K1spV-aZ9Q3p4raTC');
+if (typeof emailjs !== 'undefined') {
+  emailjs.init('K1spV-aZ9Q3p4raTC');
+}
+
+// ── On page load: check if we should scroll to a section ──
+window.addEventListener('load', () => {
+  document.body.style.opacity    = '1';
+  document.body.style.transition = 'opacity 0.35s ease';
+
+  const target = sessionStorage.getItem('scrollTo');
+  if (target) {
+    sessionStorage.removeItem('scrollTo');
+    // Small delay so layout is ready
+    setTimeout(() => scrollToSection(target), 100);
+  }
+});
+document.body.style.opacity = '0';
 
 // ── Scroll to section ─────────────────────────────────────
 function scrollToSection(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  const navH = document.getElementById('navbar').offsetHeight;
+  const navH = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 68;
   const top  = el.getBoundingClientRect().top + window.scrollY - navH;
   window.scrollTo({ top, behavior: 'smooth' });
 }
@@ -20,29 +36,34 @@ function scrollToSection(id) {
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+}
 
 function closeMobileMenu() {
-  hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
+  if (mobileMenu) mobileMenu.classList.remove('open');
 }
 
 // ── Navbar scroll effect ──────────────────────────────────
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-  updateActiveNav();
-  triggerSkillBars();
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    updateActiveNav();
+    triggerSkillBars();
+  });
+}
 
 // ── Active nav link on scroll ─────────────────────────────
-const sections  = ['home','about','education','projects','achievements','skills','contact'];
-const navLinks  = document.querySelectorAll('.nav-links a[data-section]');
+const sections = ['home','about','education','projects','achievements','skills','contact'];
+const navLinks = document.querySelectorAll('.nav-links a[data-section]');
 
 function updateActiveNav() {
+  if (!navbar) return;
   const scrollY = window.scrollY + navbar.offsetHeight + 60;
   let current   = 'home';
   sections.forEach(id => {
@@ -53,10 +74,9 @@ function updateActiveNav() {
     a.classList.toggle('active', a.dataset.section === current);
   });
 }
-// Run once on load
 updateActiveNav();
 
-// ── Skill bar animation (trigger once when in view) ───────
+// ── Skill bar animation ───────────────────────────────────
 let skillsTriggered = false;
 
 function triggerSkillBars() {
@@ -66,37 +86,37 @@ function triggerSkillBars() {
   const rect = skillsSection.getBoundingClientRect();
   if (rect.top < window.innerHeight - 100) {
     document.querySelectorAll('.skill-fill').forEach(fill => {
-      setTimeout(() => {
-        fill.style.width = fill.dataset.width + '%';
-      }, 200);
+      setTimeout(() => { fill.style.width = fill.dataset.width + '%'; }, 200);
     });
     skillsTriggered = true;
   }
 }
-// Also trigger on initial load if already in view
 triggerSkillBars();
 
 // ── Lightbox ──────────────────────────────────────────────
-const lightbox   = document.getElementById('lightbox');
-const lbImg      = document.getElementById('lightboxImg');
-const lbClose    = document.getElementById('lightboxClose');
+const lightbox = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lightboxImg');
+const lbClose  = document.getElementById('lightboxClose');
 
-document.querySelectorAll('.achieve-img-wrap').forEach(wrap => {
-  wrap.addEventListener('click', () => {
-    const img = wrap.querySelector('img');
-    if (!img || wrap.classList.contains('img-placeholder')) return;
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
+if (lightbox) {
+  document.querySelectorAll('.achieve-img-wrap').forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      const img = wrap.querySelector('img');
+      if (!img || wrap.classList.contains('img-placeholder')) return;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
   });
-});
 
-lbClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+}
 
 function closeLightbox() {
+  if (!lightbox) return;
   lightbox.classList.remove('open');
   document.body.style.overflow = '';
 }
@@ -109,6 +129,7 @@ function sendMessage() {
   const sendBtn   = document.getElementById('sendBtn');
   const successEl = document.getElementById('formSuccess');
   const errorEl   = document.getElementById('formError');
+  if (!nameEl) return;
 
   successEl.style.display = 'none';
   errorEl.style.display   = 'none';
@@ -153,9 +174,9 @@ function sendMessage() {
   });
 }
 
-// ── Page fade-in on load ──────────────────────────────────
-window.addEventListener('load', () => {
-  document.body.style.opacity    = '1';
-  document.body.style.transition = 'opacity 0.35s ease';
-});
-document.body.style.opacity = '0';
+// ── Go back to portfolio Projects section ─────────────────
+// Called from ai-robot.html back button
+function goBackToProjects() {
+  sessionStorage.setItem('scrollTo', 'projects');
+  window.location.href = 'index.html';
+}
