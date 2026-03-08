@@ -1,152 +1,342 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mohaiminul Islam | Portfolio</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet"/>
-
-  <!-- Font Awesome (icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css"/>
-
-  <style>
-    /* ---- Index-specific hero ring glow ---- */
-    .hero-avatar::before {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: conic-gradient(var(--teal), var(--teal-light), transparent, var(--teal));
-      animation: spin 6s linear infinite;
-      opacity: 0.5;
-      z-index: -1;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
   <!-- ===== NAVBAR ===== -->
   <nav id="navbar">
-    <!-- Logo -->
-    <a href="index.html" class="nav-logo">&lt;MI /&gt;</a>
-
-    <!-- Centre links -->
+    <span class="nav-logo" onclick="scrollToSection('home')">&lt;MI /&gt;</span>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html" >About</a></li>
-      <li><a href="education.html" >Education</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="achievements.html" >Achievements</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a data-section="home"         onclick="scrollToSection('home')">Home</a></li>
+      <li><a data-section="about"        onclick="scrollToSection('about')">About</a></li>
+      <li><a data-section="education"    onclick="scrollToSection('education')">Education</a></li>
+      <li><a data-section="projects"     onclick="scrollToSection('projects')">Projects</a></li>
+      <li><a data-section="achievements" onclick="scrollToSection('achievements')">Achievements</a></li>
+      <li><a data-section="skills"       onclick="scrollToSection('skills')">Skills</a></li>
+      <li><a data-section="contact"      onclick="scrollToSection('contact')">Contact</a></li>
     </ul>
-
-    <!-- Right icons + hamburger -->
     <div class="nav-right">
-      <a href="https://github.com/" target="_blank" class="nav-icon social-icon" title="GitHub">
-        <i class="fa-brands fa-github"></i>
-      </a>
-      <a href="https://linkedin.com/" target="_blank" class="nav-icon social-icon" title="LinkedIn">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <a href="https://github.com/Mahiiim" target="_blank" class="nav-icon social-icon"><i class="fa-brands fa-github"></i></a>
+      <a href="https://linkedin.com/in/MohaiminulIslam" target="_blank" class="nav-icon social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="education.html">Education</a>
-    <a href="projects.html">Projects</a>
-    <a href="achievements.html">Achievements</a>
-    <a href="skills.html">Skills</a>
-    <a href="contact.html">Contact</a>
+    <a onclick="scrollToSection('home');closeMobileMenu()">Home</a>
+    <a onclick="scrollToSection('about');closeMobileMenu()">About</a>
+    <a onclick="scrollToSection('education');closeMobileMenu()">Education</a>
+    <a onclick="scrollToSection('projects');closeMobileMenu()">Projects</a>
+    <a onclick="scrollToSection('achievements');closeMobileMenu()">Achievements</a>
+    <a onclick="scrollToSection('skills');closeMobileMenu()">Skills</a>
+    <a onclick="scrollToSection('contact');closeMobileMenu()">Contact</a>
   </div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-
-    <!-- Profile photo -->
+  <!-- ===========================  HOME  =========================== -->
+  <section id="home">
     <div class="hero-avatar">
-      <!-- Replace src with your actual photo: images/profile.jpg -->
       <img src="images/profile.jpg" alt="Mohaiminul Islam"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-      <div class="avatar-placeholder" style="display:none;">
-        <i class="fa-solid fa-user"></i>
-      </div>
-      <div class="badge">
-        <i class="fa-solid fa-check"></i>
-      </div>
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+      <div class="avatar-placeholder" style="display:none;"><i class="fa-solid fa-user"></i></div>
+      <div class="badge"><i class="fa-solid fa-check"></i></div>
     </div>
-
-    <!-- Name -->
-    <h1 class="hero-name">
-      <span class="first">Mohaiminul </span><span class="last">Islam</span>
-    </h1>
-
-    <!-- Tagline -->
-    <p class="hero-tagline">
-      Electronics &amp; Telecommunication Engineer | AI &amp; Robotics Enthusiast |
-      Embedded Systems Developer
-    </p>
-
-    <!-- Skill tags -->
+    <h1 class="hero-name"><span class="first">Mohaiminul </span><span class="last">Islam</span></h1>
+    <p class="hero-tagline">Electronics &amp; Telecommunication Engineer | AI &amp; Robotics Enthusiast | Embedded Systems Developer</p>
     <div class="hero-tags">
-      <span>Python</span>
-      <span>C++</span>
-      <span>Embedded Systems</span>
-      <span>AI</span>
-      <span>Web Technologies</span>
-      <span>MATLAB</span>
-      <span>Proteus</span>
+      <span>Python</span><span>C++</span><span>Embedded Systems</span>
+      <span>AI</span><span>Web Technologies</span><span>MATLAB</span><span>Proteus</span>
     </div>
-
-    <!-- CTA Buttons -->
     <div class="hero-cta">
-      <div class="arrow-indicator">
-        <i class="fa-solid fa-arrow-down"></i>
-      </div>
-      <a href="projects.html" class="btn-primary">
-        View Projects
-      </a>
-      <a href="contact.html" class="btn-secondary">
-        Contact Me
-      </a>
+      <div class="arrow-indicator"><i class="fa-solid fa-arrow-down"></i></div>
+      <button class="btn-primary"   onclick="scrollToSection('projects')">View Projects</button>
+      <button class="btn-secondary" onclick="scrollToSection('contact')">Contact Me</button>
     </div>
-
-    <!-- Download Resume -->
     <div class="hero-resume">
       <a href="images/resume.pdf" download class="btn-resume">
-        <i class="fa-solid fa-download"></i>
-        Download Resume
+        <i class="fa-solid fa-download"></i> Download Resume
       </a>
     </div>
-
   </section>
+
+  <!-- ===========================  ABOUT  =========================== -->
+  <section id="about">
+    <div class="section-heading">
+      <h2>About <span>Me</span></h2>
+      <div class="heading-line"></div>
+    </div>
+    <div class="about-card">
+      <h3>Who I Am</h3>
+      <p>I am an Electronics &amp; Telecommunication Engineering student at RUET, Bangladesh, passionate about embedded systems, AI, and robotics. I enjoy building practical projects using Arduino, ESP32, and Python. My goal is to become a professional engineer who bridges hardware and software to create smart, real-world solutions.</p>
+      <div class="info-grid">
+        <div class="info-box"><div class="label">Focus</div><div class="value">Embedded &amp; AI</div></div>
+        <div class="info-box"><div class="label">Location</div><div class="value">Chattogram, BD</div></div>
+        <div class="info-box"><div class="label">University</div><div class="value">RUET</div></div>
+        <div class="info-box"><div class="label">Status</div><div class="value">Student</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================  EDUCATION  =========================== -->
+  <section id="education">
+    <div class="section-heading">
+      <h2>My <span>Education</span></h2>
+      <div class="heading-line"></div>
+    </div>
+    <div class="edu-content">
+      <h2 class="timeline-label"><i class="fa-solid fa-graduation-cap"></i> Academic Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <h4>B.Sc in Electronics &amp; Telecommunication Engineering</h4>
+            <p class="tl-institution">RUET, Bangladesh</p>
+            <p class="tl-date"><i class="fa-regular fa-calendar"></i> 2023 – Present</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <h4>HSC</h4>
+            <p class="tl-institution">Bangladesh Nou-Bahini School and College, Chattogram</p>
+            <p class="tl-date"><i class="fa-regular fa-calendar"></i> 2020 – 2022</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <h4>SSC</h4>
+            <p class="tl-institution">Bangladesh Nou-Bahini School and College, Chattogram</p>
+            <p class="tl-date"><i class="fa-regular fa-calendar"></i> 2018 – 2020</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================  PROJECTS  =========================== -->
+  <section id="projects">
+    <div class="section-heading">
+      <h2>Featured <span>Projects</span></h2>
+      <div class="heading-line"></div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card proj-card--teal">
+        <div class="proj-card-top">
+          <div class="proj-icon proj-icon--teal"><i class="fa-solid fa-robot"></i></div>
+          <div><h3>AI-Powered Interactive Robot</h3><p class="proj-meta">Jul 2025 – Present</p></div>
+        </div>
+        <div class="proj-card-body">
+          <p class="proj-tag-label">RUET</p>
+          <p class="proj-desc">A multifunctional robot combining AI, IoT, and servo mechanics for interactive real-world applications.</p>
+          <ul class="proj-bullets">
+            <li>Voice recognition and AI interaction with Python</li>
+            <li>Emotion &amp; eye expression control via programmable outputs</li>
+            <li>Servo-based gesture control using MG90s motors</li>
+            <li>Home automation via ESP32</li>
+            <li>Audio and web task execution</li>
+          </ul>
+          <div class="proj-tags"><span>Python</span><span>ESP32</span><span>AI</span><span>Arduino</span><span>Servo</span></div>
+          <a href="#" class="btn-view-project"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+        </div>
+      </div>
+      <div class="proj-card proj-card--blue">
+        <div class="proj-card-top">
+          <div class="proj-icon proj-icon--blue"><i class="fa-solid fa-phone"></i></div>
+          <div><h3>EduDial</h3><p class="proj-meta">BDApps Innovation Summit 2025</p></div>
+        </div>
+        <div class="proj-card-body">
+          <p class="proj-tag-label">Team: RUET Innovators • Top 25/1500+</p>
+          <p class="proj-desc">IVR-based educational platform delivering accessible content to rural students across Bangladesh.</p>
+          <ul class="proj-bullets">
+            <li>IVR-based educational content delivery for rural students</li>
+            <li>SMS-based quizzes and automated feedback</li>
+            <li>BDApps API integration</li>
+            <li>Scalable freemium business model with NGO &amp; government partnerships</li>
+          </ul>
+          <div class="proj-tags"><span>IVR</span><span>SMS</span><span>API</span><span>EdTech</span><span>Business Model</span></div>
+          <a href="#" class="btn-view-project"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+        </div>
+      </div>
+      <div class="proj-card proj-card--purple">
+        <div class="proj-card-top">
+          <div class="proj-icon proj-icon--purple"><i class="fa-solid fa-gamepad"></i></div>
+          <div><h3>Letter-Matching Game</h3><p class="proj-meta">Academic Project</p></div>
+        </div>
+        <div class="proj-card-body">
+          <p class="proj-tag-label">C++ Console Application</p>
+          <p class="proj-desc">Console-based interactive game implementing letter-matching logic with score tracking.</p>
+          <ul class="proj-bullets">
+            <li>Interactive letter-matching logic</li>
+            <li>User interaction and score tracking</li>
+            <li>Optimized code structure</li>
+          </ul>
+          <div class="proj-tags"><span>C++</span><span>OOP</span><span>Console</span></div>
+          <a href="#" class="btn-view-project"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+        </div>
+      </div>
+      <div class="proj-card proj-card--teal">
+        <div class="proj-card-top">
+          <div class="proj-icon proj-icon--teal"><i class="fa-solid fa-leaf"></i></div>
+          <div><h3>KrishiOS – Smart Agriculture Platform</h3><p class="proj-meta">Ongoing Project</p></div>
+        </div>
+        <div class="proj-card-body">
+          <p class="proj-tag-label">Smart Agriculture</p>
+          <p class="proj-desc">KrishiOS is a smart agriculture platform designed to help farmers using digital technology. It provides intelligent agricultural solutions and modern farming support.</p>
+          <ul class="proj-bullets">
+            <li>Digital crop and livestock management</li>
+            <li>Smart technology for improved productivity</li>
+            <li>Modern farming support tools</li>
+          </ul>
+          <div class="proj-tags"><span>Agriculture</span><span>IoT</span><span>Web App</span><span>Smart Tech</span></div>
+          <a href="#" class="btn-view-project"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================  ACHIEVEMENTS  =========================== -->
+  <section id="achievements">
+    <div class="section-heading">
+      <h2><span><i class="fa-solid fa-trophy" style="-webkit-text-fill-color:var(--teal);"></i> Achievements</span></h2>
+      <p style="color:var(--text-gray);margin-top:8px;font-size:1rem;">Awards and Project Recognition</p>
+      <div class="heading-line"></div>
+    </div>
+    <div class="achieve-cards-wrap">
+      <div class="achieve-card">
+        <div class="achieve-card-text">
+          <h3>EduDial</h3>
+          <p class="achieve-award">Top 25 — BDApps Innovation Summit 2025</p>
+          <p class="achieve-desc">EduDial is an innovative IVR-based education platform developed to make learning accessible for students without smartphones or internet access. The project was recognized as one of the Top 25 teams among more than 1500 participants at the BDApps Innovation Summit 2025. The system demonstrates the practical use of telecommunication technology to reduce the digital divide and improve educational accessibility in rural areas.</p>
+        </div>
+        <div class="achieve-gallery--3">
+          <div class="achieve-img-wrap"><img src="images/bdapps1.jpg" alt="RUET Innovators Top 25" onerror="this.parentElement.classList.add('img-placeholder')"/><div class="img-overlay"></div></div>
+          <div class="achieve-img-wrap"><img src="images/bdapps2.jpg" alt="BDApps Summit team" onerror="this.parentElement.classList.add('img-placeholder')"/><div class="img-overlay"></div></div>
+          <div class="achieve-img-wrap"><img src="images/bdapps3.jpg" alt="BDApps members" onerror="this.parentElement.classList.add('img-placeholder')"/><div class="img-overlay"></div></div>
+        </div>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-card-text">
+          <h3>AI-Powered Interactive Robot</h3>
+          <p class="achieve-award">Top 5 — Annual Project Fair of ETE, RUET</p>
+          <p class="achieve-desc">The AI-Powered Interactive Robot is a voice-controlled intelligent assistant that integrates artificial intelligence with embedded systems. The project demonstrates real-time speech recognition, emotion-based interaction, and IoT device control. The system achieved a Top 5 position at the university project fair for its innovative design and practical engineering implementation.</p>
+        </div>
+        <div class="achieve-gallery--1">
+          <div class="achieve-img-wrap">
+            <img src="https://image2url.com/r2/default/images/1772452207866-7b30d4d9-aacf-4622-9e79-ce014842927f.blob" alt="AI Robot Project Fair" onerror="this.parentElement.classList.add('img-placeholder')"/>
+            <div class="img-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================  SKILLS  =========================== -->
+  <section id="skills">
+    <div class="section-heading">
+      <h2>Skills &amp; <span>Expertise</span></h2>
+      <div class="heading-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon skill-icon--teal"><i class="fa-solid fa-code"></i></div><h3>Programming</h3></div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/></span><span class="skill-name">Python</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"/></span><span class="skill-name">C++</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"/></span><span class="skill-name">JavaScript</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo skill-logo--text">M</span><span class="skill-name">MATLAB</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon skill-icon--teal"><i class="fa-solid fa-microchip"></i></div><h3>Embedded Systems</h3></div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino"/></span><span class="skill-name">Arduino</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo skill-logo--esp"><i class="fa-solid fa-wifi"></i></span><span class="skill-name">ESP32</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo skill-logo--proteus"><i class="fa-solid fa-bolt"></i></span><span class="skill-name">Proteus</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon skill-icon--teal"><i class="fa-solid fa-globe"></i></div><h3>Web Development</h3></div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/></span><span class="skill-name">HTML/CSS</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/></span><span class="skill-name">React</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node"/></span><span class="skill-name">Node.js</span><span class="skill-pct">60%</span></div><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></span><span class="skill-name">MySQL</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon skill-icon--teal"><i class="fa-solid fa-screwdriver-wrench"></i></div><h3>Tools</h3></div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo skill-logo--ms"><i class="fa-brands fa-windows"></i></span><span class="skill-name">Microsoft Office</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo skill-logo--tex">L<sup>A</sup>T<sub>E</sub>X</span><span class="skill-name">Overleaf</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/></span><span class="skill-name">Git/GitHub</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><div class="skill-icon skill-icon--teal"><i class="fa-solid fa-people-group"></i></div><h3>Soft &amp; Business Skills</h3></div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-info"><span class="skill-name" style="margin-left:0">Team Collaboration</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-name" style="margin-left:0">Business Model Design</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div></div>
+          <div class="skill-item"><div class="skill-info"><span class="skill-name" style="margin-left:0">Communication</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================  CONTACT  =========================== -->
+  <section id="contact">
+    <div class="section-heading">
+      <h2>Get In <span>Touch</span></h2>
+      <div class="heading-line"></div>
+    </div>
+    <div class="contact-layout">
+      <div>
+        <p class="contact-info-title">Contact Information</p>
+        <div class="contact-info-list">
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-regular fa-envelope"></i></div><div class="contact-info-text"><span class="ci-label">Email</span><span class="ci-value">mohaiminul118@gmail.com</span></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div><div class="contact-info-text"><span class="ci-label">Phone</span><span class="ci-value">01857768958</span></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div><div class="contact-info-text"><span class="ci-label">Location</span><span class="ci-value">Chattogram, Bangladesh</span></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-brands fa-github"></i></div><div class="contact-info-text"><span class="ci-label">GitHub</span><a href="https://github.com/Mahiiim" target="_blank" class="ci-value ci-link">Mahiiim</a></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-brands fa-linkedin-in"></i></div><div class="contact-info-text"><span class="ci-label">LinkedIn</span><a href="https://linkedin.com/in/MohaiminulIslam" target="_blank" class="ci-value ci-link">Mohaiminul Islam</a></div></div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <p class="contact-form-title">Send a Message</p>
+        <div id="formSuccess" class="form-success" style="display:none;"><i class="fa-solid fa-circle-check"></i> Message sent! I'll get back to you soon.</div>
+        <div id="formError"   class="form-error"   style="display:none;"><i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again.</div>
+        <div class="contact-form">
+          <input type="text"  id="userName"    class="form-input"    placeholder="Your Name"/>
+          <input type="email" id="userEmail"   class="form-input"    placeholder="Your Email"/>
+          <textarea           id="userMessage" class="form-textarea" placeholder="Your Message" rows="6"></textarea>
+          <button class="btn-send" id="sendBtn" onclick="sendMessage()">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></span>
+    <img src="" alt="" id="lightboxImg"/>
+  </div>
 
   <!-- ===== FOOTER ===== -->
   <footer>
     <p>&copy; 2025 <span>Mohaiminul Islam</span>. All rights reserved.</p>
   </footer>
 
-  <!-- Script -->
   <script src="js/script.js"></script>
 </body>
 </html>
