@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EduDial | Mohaiminul Islam</title>
+  <title>Letter Matching Game | Mohaiminul Islam</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet"/>
@@ -35,7 +35,7 @@
     }
     .back-btn:hover { color: var(--teal); }
 
-    /* Hero heading */
+    /* Heading */
     .proj-page-heading {
       text-align: center;
       margin-bottom: 40px;
@@ -71,13 +71,9 @@
       background: rgba(255,255,255,0.8);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 24px 16px 20px;
+      padding: 28px 16px 22px;
       text-align: center;
       transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-    }
-    .feature-card:nth-child(2) {
-      border-color: var(--teal-light);
-      box-shadow: 0 4px 20px rgba(14,184,160,0.12);
     }
     .feature-card:hover {
       border-color: var(--teal);
@@ -91,7 +87,7 @@
       color: var(--teal);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem;
-      margin: 0 auto 12px;
+      margin: 0 auto 14px;
     }
     .feature-card .fc-label {
       font-size: 0.72rem;
@@ -99,21 +95,19 @@
       color: var(--teal);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .feature-card .fc-value {
       font-size: 0.97rem;
       font-weight: 700;
       color: var(--text-dark);
     }
-    .feature-card:nth-child(2) .fc-value { font-weight: 800; }
 
-    /* Section */
+    /* Sections */
     .pp-section { margin-bottom: 48px; animation: fadeInUp 0.6s ease both; }
     .pp-section:nth-child(3) { animation-delay: 0.15s; }
     .pp-section:nth-child(4) { animation-delay: 0.25s; }
     .pp-section:nth-child(5) { animation-delay: 0.35s; }
-    .pp-section:nth-child(6) { animation-delay: 0.45s; }
 
     .pp-title {
       text-align: center;
@@ -135,49 +129,16 @@
       font-size: 0.97rem;
       color: var(--text-gray);
       line-height: 1.85;
-      max-width: 660px;
+      max-width: 680px;
       margin: 0 auto;
     }
 
-    /* Project image */
-    .proj-image-wrap {
-      display: flex;
-      justify-content: center;
-    }
-    .proj-image-wrap img {
-      width: 100%;
-      max-width: 480px;
-      border-radius: 16px;
-      object-fit: cover;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-      transition: transform 0.3s ease;
-    }
-    .proj-image-wrap img:hover { transform: scale(1.02); }
-
-    /* Image placeholder */
-    .proj-img-placeholder {
-      width: 100%;
-      max-width: 480px;
-      aspect-ratio: 4/3;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #d4f0ed, #e8f8f6);
-      border: 2px dashed var(--teal);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      color: var(--teal);
-    }
-    .proj-img-placeholder i { font-size: 2.5rem; opacity: 0.5; }
-    .proj-img-placeholder p { font-size: 0.88rem; opacity: 0.6; }
-
-    /* Report card */
+    /* Source code card */
     .report-card {
       background: rgba(255,255,255,0.82);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 24px 32px;
+      padding: 28px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -201,11 +162,11 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 12px 24px;
+      padding: 13px 26px;
       background: var(--teal);
       color: white;
       border-radius: 999px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       white-space: nowrap;
       transition: all 0.25s ease;
@@ -255,26 +216,26 @@
 
     <!-- Heading -->
     <div class="proj-page-heading">
-      <h1>EduDial – <span>Smart Education Platform</span></h1>
-      <p class="subtitle">IVR-Based Smart Education Platform</p>
+      <h1>Letter Matching <span>Game</span></h1>
+      <p class="subtitle">C++ Console Based Interactive Game</p>
     </div>
 
     <!-- Feature cards -->
     <div class="feature-cards">
       <div class="feature-card">
-        <div class="fc-icon"><i class="fa-solid fa-phone-volume"></i></div>
+        <div class="fc-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="fc-label">Programming</div>
+        <div class="fc-value">C++ Language</div>
+      </div>
+      <div class="feature-card">
+        <div class="fc-icon"><i class="fa-solid fa-terminal"></i></div>
         <div class="fc-label">System</div>
-        <div class="fc-value">IVR Learning</div>
+        <div class="fc-value">Console Based</div>
       </div>
       <div class="feature-card">
-        <div class="fc-icon"><i class="fa-regular fa-message"></i></div>
-        <div class="fc-label">Interaction</div>
-        <div class="fc-value">SMS Quiz</div>
-      </div>
-      <div class="feature-card">
-        <div class="fc-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
-        <div class="fc-label">Technology</div>
-        <div class="fc-value">BDApps API</div>
+        <div class="fc-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+        <div class="fc-label">Concept</div>
+        <div class="fc-value">Game Logic</div>
       </div>
     </div>
 
@@ -282,37 +243,23 @@
     <div class="pp-section">
       <h2 class="pp-title">About <span>Project</span></h2>
       <p class="pp-about-text">
-        EduDial is an IVR-based education platform designed to reduce the digital divide in rural Bangladesh.
-        Students can access educational lessons through simple phone calls and SMS without needing
-        smartphones or internet access. The system uses BDApps Voice API and SMS API to deliver
-        accessible learning solutions.
+        The Letter Matching Game is a console-based interactive program developed using C++. The project
+        was created to improve programming skills and logical problem-solving ability. The system uses
+        structured programming concepts including loops, functions, and conditionals to implement game
+        logic and scoring.
       </p>
     </div>
 
-    <!-- Project Image -->
-    <div class="pp-section">
-      <div class="proj-image-wrap">
-        <img
-          src="images/edudial.jpeg"
-          alt="EduDial – Smart Education Platform presentation"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="proj-img-placeholder" style="display:none;">
-          <i class="fa-regular fa-image"></i>
-          <p>Add image: images/edudial-project.jpg</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Report -->
+    <!-- Project Source Code -->
     <div class="pp-section">
       <div class="report-card">
         <div class="report-card-left">
-          <h3>Project <span>Report</span></h3>
-          <p>PDF Case Study</p>
+          <h3>Project <span>Source Code</span></h3>
+          <p>GitHub Repository</p>
         </div>
-        <a href="https://drive.google.com/file/d/1YZkLMzv-olc4FjEqhw9vE6fNRp22JaGj/view" target="_blank" class="btn-report">
-          View PDF <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <a href="https://github.com/Mahiiim/Letter-Matching-Game"
+           target="_blank" class="btn-report">
+          View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
     </div>
@@ -321,10 +268,11 @@
     <div class="pp-section">
       <h2 class="pp-title">Technology <span>Stack</span></h2>
       <div class="tech-tags">
-        <span>IVR</span>
-        <span>BDApps API</span>
-        <span>SMS API</span>
-        <span>Voice API</span>
+        <span>C++</span>
+        <span>Programming</span>
+        <span>Console</span>
+        <span>Game Logic</span>
+        <span>Algorithms</span>
       </div>
     </div>
 
