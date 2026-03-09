@@ -137,6 +137,16 @@ body.dark .timeline-dot { background: var(--bg); }
 }
 .settings-btn:hover { color: var(--teal); }
 
+body.dark .btn-resume {
+  background: rgba(14, 184, 160, 0.15);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+body.dark .btn-resume:hover {
+  background: var(--teal);
+  color: white;
+}
+
 .settings-dropdown {
   position: absolute;
   top: calc(100% + 12px);
