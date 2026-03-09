@@ -1,0 +1,243 @@
+/* ============================================================
+   DARK MODE + SETTINGS MENU
+   Paste this at the very BOTTOM of css/style.css
+   ============================================================ */
+
+/* ── Dark mode variables ──────────────────────────────────── */
+body.dark {
+  --bg:         #0f1117;
+  --bg-light:   #161b26;
+  --text-dark:  #f1f5f9;
+  --text-mid:   #cbd5e1;
+  --text-gray:  #94a3b8;
+  --border:     #1e2d3d;
+  --white:      #1a2332;
+  --teal:       #0eb8a0;
+  --teal-dark:  #0a9e89;
+  --teal-light: #4dd0c4;
+}
+
+/* Smooth transition for everything when switching modes */
+body, nav, .about-card, .info-box, .timeline-card,
+.proj-card, .skill-card, .achieve-card, .contact-info-item,
+.contact-form-card, .report-card, .feature-card,
+.mobile-menu, footer, section {
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+              color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── Dark mode overrides ─────────────────────────────────── */
+body.dark {
+  background-color: var(--bg);
+  color: var(--text-dark);
+}
+
+/* Navbar */
+body.dark nav {
+  background: rgba(15, 17, 23, 0.88);
+  border-bottom-color: rgba(30, 45, 61, 0.7);
+}
+body.dark nav.scrolled {
+  background: rgba(15, 17, 23, 0.97);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+/* Cards */
+body.dark .about-card,
+body.dark .timeline-card,
+body.dark .skill-card,
+body.dark .achieve-card,
+body.dark .contact-form-card,
+body.dark .report-card,
+body.dark .feature-card {
+  background: rgba(22, 27, 38, 0.95);
+  border-color: #1e2d3d;
+}
+
+body.dark .proj-card {
+  background: rgba(22, 27, 38, 0.95);
+  border-color: #1e2d3d;
+}
+body.dark .proj-card--teal .proj-card-top  { background: linear-gradient(135deg, #0d2420, #0f2b26); }
+body.dark .proj-card--blue .proj-card-top  { background: linear-gradient(135deg, #0d1a2e, #0f2035); }
+body.dark .proj-card--purple .proj-card-top { background: linear-gradient(135deg, #1a0d2e, #1e1035); }
+
+body.dark .contact-info-item {
+  background: rgba(22, 27, 38, 0.95);
+  border-color: #1e2d3d;
+}
+
+/* Info boxes */
+body.dark .info-box {
+  background: rgba(30, 40, 55, 0.8);
+  border-color: #1e2d3d;
+}
+
+/* Skill bar background */
+body.dark .skill-bar { background: #1e2d3d; }
+
+/* Form inputs */
+body.dark .form-input,
+body.dark .form-textarea {
+  background: #161b26;
+  border-color: #1e2d3d;
+  color: var(--text-dark);
+}
+body.dark .form-input:focus,
+body.dark .form-textarea:focus {
+  background: #1a2030;
+  border-color: var(--teal);
+}
+
+/* Mobile menu */
+body.dark .mobile-menu {
+  background: rgba(15, 17, 23, 0.98);
+  border-bottom-color: #1e2d3d;
+}
+body.dark .mobile-menu a {
+  border-bottom-color: #1e2d3d;
+}
+
+/* Hero background blobs stay subtle */
+body.dark #home::before { background: radial-gradient(circle, rgba(14,184,160,0.07) 0%, transparent 70%); }
+body.dark #home::after  { background: radial-gradient(circle, rgba(14,184,160,0.05) 0%, transparent 70%); }
+
+/* Section dividers */
+body.dark section:not(#home) { border-top-color: rgba(30,45,61,0.6); }
+
+/* Proj tags */
+body.dark .proj-tags span,
+body.dark .hero-tags span {
+  background: rgba(30, 45, 61, 0.8);
+  border-color: #1e2d3d;
+  color: var(--text-mid);
+}
+
+/* Footer */
+body.dark footer {
+  background: rgba(15,17,23,0.6);
+  border-top-color: #1e2d3d;
+}
+
+/* Timeline dot bg */
+body.dark .timeline-dot { background: var(--bg); }
+
+/* ── Settings dropdown menu ──────────────────────────────── */
+.settings-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  cursor: pointer;
+  color: var(--text-mid);
+  font-size: 1.15rem;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+.settings-btn:hover { color: var(--teal); }
+
+.settings-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 200px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  z-index: 2000;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+body.dark .settings-dropdown {
+  background: #161b26;
+  border-color: #1e2d3d;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.settings-dropdown.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  transition: background 0.18s ease, color 0.18s ease;
+  user-select: none;
+}
+.settings-item:hover {
+  background: rgba(14,184,160,0.08);
+  color: var(--text-dark);
+}
+body.dark .settings-item:hover {
+  background: rgba(14,184,160,0.1);
+}
+
+.settings-item .si-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.settings-item i.si-icon {
+  font-size: 1rem;
+  width: 18px;
+  text-align: center;
+  color: var(--text-gray);
+}
+.settings-item:hover i.si-icon { color: var(--teal); }
+
+.settings-item .si-check {
+  color: var(--teal);
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.settings-item.active .si-check { opacity: 1; }
+
+.settings-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
+body.dark .settings-divider { background: #1e2d3d; }
+
+/* ── Mobile theme toggle button ─────────────────────────── */
+/* Small sun/moon icon button shown only on mobile, left of hamburger */
+.mobile-theme-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(14,184,160,0.1);
+  color: var(--teal);
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1.5px solid rgba(14,184,160,0.25);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+.mobile-theme-btn:hover {
+  background: rgba(14,184,160,0.2);
+}
+
+/* ── Responsive: show mobile toggle, hide desktop settings on mobile ── */
+@media (max-width: 768px) {
+  .settings-btn { display: none; }
+  .mobile-theme-btn { display: flex; }
+}
