@@ -553,7 +553,10 @@
         <div class="contact-form">
           <input type="text" id="userName" class="form-input" placeholder="Your Name" />
           <input type="email" id="userEmail" class="form-input" placeholder="Your Email" />
-          <textarea id="userMessage" class="form-textarea" placeholder="Your Message" rows="6"></textarea>
+          <div class="form-field">
+            <textarea id="userMessage" class="form-textarea" rows="6"></textarea>
+            <label class="form-label">Your Message</label>
+          </div>
           <button class="btn-send" id="sendBtn" onclick="sendMessage()">
             <i class="fa-solid fa-paper-plane"></i> Send Message
           </button>
