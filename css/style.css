@@ -1287,31 +1287,8 @@ section:not(#home) {
   box-shadow: 0 4px 20px rgba(14, 184, 160, 0.35);
   margin-top: 4px;
 }
-/* Floating label field wrapper */
-.form-field {
-  position: relative;
-}
-.form-field .form-textarea {
-  padding-top: 28px;
-  padding-bottom: 10px;
-}
-.form-label {
-  position: absolute;
-  left: 18px;
-  top: 16px;
-  font-size: 0.95rem;
-  color: #9ca8a8;
-  pointer-events: none;
-  transition: all 0.25s ease;
-  transform-origin: left;
-}
-.form-field:focus-within .form-label,
-.form-field textarea:not(:placeholder-shown) ~ .form-label {
-  top: 8px;
-  font-size: 0.72rem;
-  color: var(--teal);
-  font-weight: 600;
-}
+
+
 .btn-send:hover {
   background: var(--teal-dark);
   transform: translateY(-2px);
