@@ -37,7 +37,7 @@ const savedTheme = localStorage.getItem(THEME_KEY) || 'light';
 applyTheme(savedTheme);
 
 // ── Settings dropdown ─────────────────────────────────────
-const settingsBtn      = document.getElementById('settingsBtn');
+const settingsBtn = document.getElementById('settingsBtn');
 const settingsDropdown = document.getElementById('settingsDropdown');
 
 if (settingsBtn && settingsDropdown) {

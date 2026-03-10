@@ -11,7 +11,7 @@ if (typeof emailjs !== 'undefined') {
 
 // ── On page load: check if we should scroll to a section ──
 window.addEventListener('load', () => {
-  document.body.style.opacity    = '1';
+  document.body.style.opacity = '1';
   document.body.style.transition = 'opacity 0.35s ease';
 
   const target = sessionStorage.getItem('scrollTo');
@@ -28,12 +28,12 @@ function scrollToSection(id) {
   const el = document.getElementById(id);
   if (!el) return;
   const navH = document.getElementById('navbar') ? document.getElementById('navbar').offsetHeight : 68;
-  const top  = el.getBoundingClientRect().top + window.scrollY - navH;
+  const top = el.getBoundingClientRect().top + window.scrollY - navH - 10;
   window.scrollTo({ top, behavior: 'smooth' });
 }
 
 // ── Hamburger / mobile menu ───────────────────────────────
-const hamburger  = document.getElementById('hamburger');
+const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
 if (hamburger && mobileMenu) {
@@ -59,13 +59,13 @@ if (navbar) {
 }
 
 // ── Active nav link on scroll ─────────────────────────────
-const sections = ['home','about','education','projects','achievements','skills','contact'];
+const sections = ['home', 'about', 'education', 'projects', 'achievements', 'skills', 'contact'];
 const navLinks = document.querySelectorAll('.nav-links a[data-section]');
 
 function updateActiveNav() {
   if (!navbar) return;
   const scrollY = window.scrollY + navbar.offsetHeight + 60;
-  let current   = 'home';
+  let current = 'home';
   sections.forEach(id => {
     const sec = document.getElementById(id);
     if (sec && sec.offsetTop <= scrollY) current = id;
@@ -95,8 +95,8 @@ triggerSkillBars();
 
 // ── Lightbox ──────────────────────────────────────────────
 const lightbox = document.getElementById('lightbox');
-const lbImg    = document.getElementById('lightboxImg');
-const lbClose  = document.getElementById('lightboxClose');
+const lbImg = document.getElementById('lightboxImg');
+const lbClose = document.getElementById('lightboxClose');
 
 if (lightbox) {
   document.querySelectorAll('.achieve-img-wrap').forEach(wrap => {
@@ -123,55 +123,55 @@ function closeLightbox() {
 
 // ── EmailJS contact form ──────────────────────────────────
 function sendMessage() {
-  const nameEl    = document.getElementById('userName');
-  const emailEl   = document.getElementById('userEmail');
-  const msgEl     = document.getElementById('userMessage');
-  const sendBtn   = document.getElementById('sendBtn');
+  const nameEl = document.getElementById('userName');
+  const emailEl = document.getElementById('userEmail');
+  const msgEl = document.getElementById('userMessage');
+  const sendBtn = document.getElementById('sendBtn');
   const successEl = document.getElementById('formSuccess');
-  const errorEl   = document.getElementById('formError');
+  const errorEl = document.getElementById('formError');
   if (!nameEl) return;
 
   successEl.style.display = 'none';
-  errorEl.style.display   = 'none';
+  errorEl.style.display = 'none';
 
-  const name    = nameEl.value.trim();
-  const email   = emailEl.value.trim();
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
   const message = msgEl.value.trim();
 
   if (!name || !email || !message) {
-    errorEl.innerHTML     = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.';
+    errorEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in all fields.';
     errorEl.style.display = 'flex';
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errorEl.innerHTML     = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email.';
+    errorEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email.';
     errorEl.style.display = 'flex';
     return;
   }
 
-  sendBtn.disabled  = true;
+  sendBtn.disabled = true;
   sendBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
 
   emailjs.send('service_924gh3j', 'template_xr9tqrg', {
-    from_name:  name,
+    from_name: name,
     from_email: email,
-    message:    message,
-    to_name:    'Mohaiminul Islam'
+    message: message,
+    to_name: 'Mohaiminul Islam'
   })
-  .then(() => {
-    successEl.innerHTML     = '<i class="fa-solid fa-circle-check"></i> Message sent! I\'ll get back to you soon.';
-    successEl.style.display = 'flex';
-    nameEl.value = emailEl.value = msgEl.value = '';
-    sendBtn.disabled  = false;
-    sendBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-  })
-  .catch(err => {
-    console.error(err);
-    errorEl.innerHTML     = '<i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again.';
-    errorEl.style.display = 'flex';
-    sendBtn.disabled      = false;
-    sendBtn.innerHTML     = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-  });
+    .then(() => {
+      successEl.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent! I\'ll get back to you soon.';
+      successEl.style.display = 'flex';
+      nameEl.value = emailEl.value = msgEl.value = '';
+      sendBtn.disabled = false;
+      sendBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+    })
+    .catch(err => {
+      console.error(err);
+      errorEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again.';
+      errorEl.style.display = 'flex';
+      sendBtn.disabled = false;
+      sendBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+    });
 }
 
 // ── Go back to portfolio Projects section ─────────────────

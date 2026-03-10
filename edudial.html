@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EduDial | Mohaiminul Islam</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/darkmode.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/darkmode.css" />
   <style>
     .project-page {
       min-height: 100vh;
@@ -34,7 +37,10 @@
       padding: 0;
       font-family: 'DM Sans', sans-serif;
     }
-    .back-btn:hover { color: var(--teal); }
+
+    .back-btn:hover {
+      color: var(--teal);
+    }
 
     /* Hero heading */
     .proj-page-heading {
@@ -42,6 +48,7 @@
       margin-bottom: 40px;
       animation: fadeInDown 0.7s ease both;
     }
+
     .proj-page-heading h1 {
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
@@ -49,12 +56,14 @@
       line-height: 1.2;
       margin-bottom: 10px;
     }
+
     .proj-page-heading h1 span {
       background: linear-gradient(90deg, var(--teal), var(--teal-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+
     .proj-page-heading .subtitle {
       font-size: 1rem;
       color: var(--text-gray);
@@ -68,32 +77,40 @@
       margin-bottom: 52px;
       animation: fadeInUp 0.7s ease 0.1s both;
     }
+
     .feature-card {
-      background: rgba(255,255,255,0.8);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 24px 16px 20px;
       text-align: center;
       transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
     }
+
     .feature-card:nth-child(2) {
       border-color: var(--teal-light);
-      box-shadow: 0 4px 20px rgba(14,184,160,0.12);
+      box-shadow: 0 4px 20px rgba(14, 184, 160, 0.12);
     }
+
     .feature-card:hover {
       border-color: var(--teal);
-      box-shadow: 0 6px 24px rgba(14,184,160,0.15);
+      box-shadow: 0 6px 24px rgba(14, 184, 160, 0.15);
       transform: translateY(-3px);
     }
+
     .feature-card .fc-icon {
-      width: 48px; height: 48px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
-      background: rgba(14,184,160,0.1);
+      background: rgba(14, 184, 160, 0.1);
       color: var(--teal);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.2rem;
       margin: 0 auto 12px;
     }
+
     .feature-card .fc-label {
       font-size: 0.72rem;
       font-weight: 700;
@@ -102,19 +119,38 @@
       text-transform: uppercase;
       margin-bottom: 6px;
     }
+
     .feature-card .fc-value {
       font-size: 0.97rem;
       font-weight: 700;
       color: var(--text-dark);
     }
-    .feature-card:nth-child(2) .fc-value { font-weight: 800; }
+
+    .feature-card:nth-child(2) .fc-value {
+      font-weight: 800;
+    }
 
     /* Section */
-    .pp-section { margin-bottom: 48px; animation: fadeInUp 0.6s ease both; }
-    .pp-section:nth-child(3) { animation-delay: 0.15s; }
-    .pp-section:nth-child(4) { animation-delay: 0.25s; }
-    .pp-section:nth-child(5) { animation-delay: 0.35s; }
-    .pp-section:nth-child(6) { animation-delay: 0.45s; }
+    .pp-section {
+      margin-bottom: 48px;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .pp-section:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+
+    .pp-section:nth-child(4) {
+      animation-delay: 0.25s;
+    }
+
+    .pp-section:nth-child(5) {
+      animation-delay: 0.35s;
+    }
+
+    .pp-section:nth-child(6) {
+      animation-delay: 0.45s;
+    }
 
     .pp-title {
       text-align: center;
@@ -123,6 +159,7 @@
       color: var(--text-dark);
       margin-bottom: 20px;
     }
+
     .pp-title span {
       background: linear-gradient(90deg, var(--teal), var(--teal-light));
       -webkit-background-clip: text;
@@ -145,15 +182,19 @@
       display: flex;
       justify-content: center;
     }
+
     .proj-image-wrap img {
       width: 100%;
       max-width: 480px;
       border-radius: 16px;
       object-fit: cover;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
       transition: transform 0.3s ease;
     }
-    .proj-image-wrap img:hover { transform: scale(1.02); }
+
+    .proj-image-wrap img:hover {
+      transform: scale(1.02);
+    }
 
     /* Image placeholder */
     .proj-img-placeholder {
@@ -170,12 +211,20 @@
       gap: 12px;
       color: var(--teal);
     }
-    .proj-img-placeholder i { font-size: 2.5rem; opacity: 0.5; }
-    .proj-img-placeholder p { font-size: 0.88rem; opacity: 0.6; }
+
+    .proj-img-placeholder i {
+      font-size: 2.5rem;
+      opacity: 0.5;
+    }
+
+    .proj-img-placeholder p {
+      font-size: 0.88rem;
+      opacity: 0.6;
+    }
 
     /* Report card */
     .report-card {
-      background: rgba(255,255,255,0.82);
+      background: rgba(255, 255, 255, 0.82);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 24px 32px;
@@ -183,21 +232,28 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      box-shadow: 0 4px 20px rgba(14,184,160,0.07);
+      box-shadow: 0 4px 20px rgba(14, 184, 160, 0.07);
     }
+
     .report-card-left h3 {
       font-size: 1.1rem;
       font-weight: 800;
       color: var(--text-dark);
       margin-bottom: 4px;
     }
+
     .report-card-left h3 span {
       background: linear-gradient(90deg, var(--teal), var(--teal-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .report-card-left p { font-size: 0.88rem; color: var(--text-gray); }
+
+    .report-card-left p {
+      font-size: 0.88rem;
+      color: var(--text-gray);
+    }
+
     .btn-report {
       display: inline-flex;
       align-items: center;
@@ -210,13 +266,14 @@
       font-weight: 600;
       white-space: nowrap;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 16px rgba(14,184,160,0.3);
+      box-shadow: 0 4px 16px rgba(14, 184, 160, 0.3);
       flex-shrink: 0;
     }
+
     .btn-report:hover {
       background: var(--teal-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(14,184,160,0.4);
+      box-shadow: 0 6px 20px rgba(14, 184, 160, 0.4);
     }
 
     /* Tech tags */
@@ -226,6 +283,7 @@
       justify-content: center;
       gap: 12px;
     }
+
     .tech-tags span {
       padding: 8px 20px;
       border: 1.5px solid var(--teal-light);
@@ -233,18 +291,34 @@
       font-size: 0.88rem;
       font-weight: 500;
       color: var(--teal-dark);
-      background: rgba(14,184,160,0.06);
+      background: rgba(14, 184, 160, 0.06);
       transition: all 0.25s ease;
     }
-    .tech-tags span:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+    .tech-tags span:hover {
+      background: var(--teal);
+      color: white;
+      border-color: var(--teal);
+    }
 
     @media (max-width: 600px) {
-      .feature-cards { grid-template-columns: 1fr; }
-      .report-card { flex-direction: column; align-items: flex-start; }
-      .btn-report { width: 100%; justify-content: center; }
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .report-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn-report {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="project-page">
@@ -293,11 +367,8 @@
     <!-- Project Image -->
     <div class="pp-section">
       <div class="proj-image-wrap">
-        <img
-          src="images/edudial.jpeg"
-          alt="EduDial – Smart Education Platform presentation"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
+        <img src="images/edudial.jpeg" alt="EduDial – Smart Education Platform presentation"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
         <div class="proj-img-placeholder" style="display:none;">
           <i class="fa-regular fa-image"></i>
           <p>Add image: images/edudial-project.jpg</p>
@@ -312,7 +383,8 @@
           <h3>Project <span>Report</span></h3>
           <p>PDF Case Study</p>
         </div>
-        <a href="https://drive.google.com/file/d/1YZkLMzv-olc4FjEqhw9vE6fNRp22JaGj/view" target="_blank" class="btn-report">
+        <a href="https://drive.google.com/file/d/1YZkLMzv-olc4FjEqhw9vE6fNRp22JaGj/view" target="_blank"
+          class="btn-report">
           View PDF <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
       </div>
@@ -338,4 +410,5 @@
   <script src="js/script.js"></script>
   <script src="js/darkmode.js"></script>
 </body>
+
 </html>
