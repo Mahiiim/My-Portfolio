@@ -309,3 +309,6 @@ body.dark .settings-divider {
     display: flex;
   }
 }
+
+body.dark .form-label { color: #4a5568; }
+body.dark .form-field:focus-within .form-label { color: var(--teal); }
